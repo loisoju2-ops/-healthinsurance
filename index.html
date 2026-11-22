@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="African Diaspora Family Health Protection — helping Nigerians abroad protect the health of family members in Nigeria.">
+<title>African Diaspora Family Health Protection</title>
+<style>
+  /* Base Variables & Reset */
+  :root{
+    --navy:#031d46;
+    --navy2:#062d68;
+    --blue:#08a9f0;
+    --green:#00b52d;
+    --red:#ed171f;
+    --ink:#071d43;
+    --white:#fff;
+    --bg-light:#f8fafc;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
+    --transition: all 0.3s ease;
+  }
+  
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color:var(--ink);
+    background:#fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Topbar */
+  .topbar{
+    min-height:98px;
+    background:linear-gradient(110deg,#031a40,#001638);
+    color:#fff;
+    display:grid;
+    grid-template-columns:70px 150px 1fr 250px;
+    align-items:center;
+    gap:22px;
+    padding:14px 3.2%;
+  }
+  .shield{width:54px;height:62px;display:grid;place-items:center;}
+  .shield svg{width:100%;height:100%;}
+  
+  /* Custom Select Styling */
+  .select{
+    border:1px solid #078ee0;
+    color:#05b8ff;
+    border-radius:6px;
+    padding:9px 32px 9px 12px;
+    background-color:#00244f;
+    font-weight:700;
+    font-size:15px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2305b8ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    outline: none;
+    transition: var(--transition);
+    width: 100%;
+  }
+  .select:hover{background-color:#003670;}
+  .select:focus{border-color: #05b8ff; box-shadow: 0 0 0 2px rgba(5, 184, 255, 0.2);}
+  .select option{background-color:#00244f; color:#fff; font-weight: normal;}
+
+  .brand{text-align:center;}
+  .brand h1{font-size:23px;margin:0 0 4px;font-weight:800;letter-spacing: 0.5px;}
+  .brand p{font-size:13px;font-weight:600;margin:0;color: #a0b3cc;letter-spacing: 0.5px;}
+  
+  /* Translate Wrapper & Register Button */
+  .translate-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .translate {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  .translate .select{min-width:130px;}
+  
+  .topbar-register {
+    background-color: var(--green);
+    color: white;
+    text-decoration: none;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: var(--transition);
+    box-shadow: 0 2px 6px rgba(0, 181, 45, 0.3);
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .topbar-register:hover {
+    background-color: #009e27;
+    transform: translateY(-1px);
+  }
+
+  /* Main Navigation */
+  .mainnav{
+    min-height:102px;
+    display:flex;
+    align-items:stretch;
+    justify-content:space-around;
+    padding:15px 2.3%;
+    background:#fff;
+    box-shadow:var(--shadow-sm);
+    position:relative;
+    z-index:10;
+  }
+  .mainnav a{
+    flex:1;
+    text-decoration:none;
+    color:var(--ink);
+    font-size:16px;
+    font-weight: 600;
+    line-height:1.35;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:8px 12px;
+    border-right:1px solid #e2e8f0;
+    transition: var(--transition);
+  }
+  .mainnav a:hover{color: var(--blue); background: #f8fafc;}
+  .mainnav a:last-child{border:0;}
+  .mainnav a.active{color:var(--red);font-weight:800;position:relative;}
+  .mainnav a.active:after{
+    content:"";
+    position:absolute;
+    bottom:4px;
+    left:15%;
+    right:15%;
+    height:3px;
+    border-radius: 3px;
+    background:var(--red);
+  }
+
+  /* Hero Section */
+  .hero{
+    min-height:512px;
+    display:grid;
+    grid-template-columns:58% 42%;
+    overflow:hidden;
+    background:linear-gradient(125deg,#062b63 0%,#003a80 62%,#001c46 100%);
+    color:white;
+    position:relative;
+  }
+  .hero:before{
+    content:"";
+    position:absolute;
+    left:-20%;
+    bottom:-58%;
+    width:95%;
+    height:100%;
+    border-radius:50%;
+    background:#001a43;
+    opacity:.55;
+    transform:rotate(-12deg);
+  }
+  .hero-copy{padding:62px 26px 44px 5%;position:relative;z-index:1;max-width:750px;}
+  .hero-copy h2{color:#08aef3;font-size:36px;line-height:1.15;margin:0 0 20px;font-weight:800;}
+  .hero-copy h3{font-size:26px;margin:0 0 4px;font-weight: 700;}
+  .hero-copy strong{font-size:17px;color: #d1e3f8;}
+  .hero-copy p{font-size:18px;line-height:1.5;margin:8px 0 20px;color: #e2e8f0;}
+  .hero-copy h4{font-size:22px;margin:24px 0 4px;color: #fff;}
+  .hero-copy .reasons{margin-top:16px;margin-bottom:30px;font-weight: 600;color: #a0b3cc;}
+  
+  .cta{
+    display:inline-block;
+    background:#0878f9;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:700;
+    padding:14px 38px;
+    border-radius:30px;
+    box-shadow:0 6px 18px rgba(8, 120, 249, 0.4);
+    transition: var(--transition);
+  }
+  .cta:hover{background:#00a6ee;transform:translateY(-3px);box-shadow:0 8px 24px rgba(0, 166, 238, 0.5);}
+
+  .hero-art{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    padding: 35px 24px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  }
+  .hero-art img{width:min(94%,390px);height:auto;object-fit:contain;position:relative;z-index:1;}
+
+  /* Authorization Section */
+  .content{padding:60px 5% 80px;max-width:1440px;margin:auto;}
+  .content-grid{display:grid;grid-template-columns:42% 1fr;gap:40px;align-items:center;}
+  .content-image{
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:330px;
+    overflow:hidden;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid #e2e8f0;
+  }
+  .content-image img{width:100%;height:100%;object-fit:contain; padding: 20px;}
+  .content-copy h2{font-size:28px;margin:0 0 20px;color:var(--navy);font-weight: 800;}
+  .content-copy p{font-size:17px;line-height:1.6;margin:0 0 16px;color: #475569;}
+
+  /* Reasons Section (Vertical List) */
+  .reasons-section {
+    background-color: #f4f7f6;
+    padding: 80px 5%;
+  }
+  .reasons-title {
+    text-align: center;
+    color: #2b6cb0;
+    font-size: 32px;
+    margin: 0 auto 50px;
+    font-weight: 800;
+    max-width: 850px;
+    line-height: 1.3;
+  }
+  
+  .reasons-list {
+    max-width: 750px;
+    margin: 0 auto;
+    padding-left: 20px;
+    list-style-type: decimal;
+    font-size: 18px;
+    line-height: 2;
+    color: #334155;
+    font-weight: 500;
+  }
+  
+  .reasons-list li {
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    .reasons-list li:hover {
+      background-color: #e2e8f0;
+    }
+  }
+  
+  .reasons-list li:active {
+    background-color: #cbd5e1;
+  }
+
+  .reasons-list a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer{
+    background:linear-gradient(110deg,#031b42,#00183a);
+    color:#fff;
+    padding:30px 5% 100px;
+  }
+  .footer-top{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    min-height:65px;
+    border-bottom:1px solid #17416c;
+    padding-bottom:20px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .footer .shield{flex:0 0 50px;}
+  .footer-divider{height:40px;width:1px;background:#fff;opacity:.3;}
+  .footer-tagline{font-size:16px;flex:1;color: #a0b3cc; font-weight: 500;}
+
+  /* Responsive Adjustments */
+  @media(max-width:850px){
+    .topbar{grid-template-columns:48px 115px 1fr;gap:12px;padding:12px 16px;}
+    .brand h1{font-size:18px;}
+    .brand p{font-size:11px;}
+    
+    .translate-wrapper {
+      grid-column: 2/4;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: -3px;
+      gap: 15px;
+    }
+    .topbar{row-gap:5px;}
+    
+    .mainnav{overflow-x:auto;justify-content:flex-start;min-height:88px;padding:10px;}
+    .mainnav a{min-width:145px;font-size:14px;}
+    
+    .hero{grid-template-columns:1fr;min-height:0;}
+    .hero-copy{padding:42px 24px 34px 24px;}
+    .hero-copy h2{font-size:30px;}
+    .hero-art{min-height:330px;padding:25px;box-shadow: 0 -10px 20px rgba(0,0,0,0.05);}
+    .hero-art img{max-width:330px;}
+    
+    .content{padding:40px 20px 60px;}
+    .content-grid{grid-template-columns:1fr;gap:30px;}
+    .content-image{min-height:0;max-height:380px;}
+    .content-copy h2{margin-bottom:18px;}
+    
+    .reasons-section { padding: 60px 20px; }
+    .reasons-title { font-size: 26px; margin-bottom: 35px; }
+    .reasons-list { font-size: 16px; line-height: 1.8; padding-left: 10px; }
+    
+    .footer{padding:30px 20px 65px;}
+    .footer-top{flex-wrap:wrap;gap:16px;}
+    .footer-tagline{font-size:14px;}
+  }
+
+  @media(max-width:480px){
+    .topbar{grid-template-columns:42px 1fr;gap:9px;}
+    .shield{width:42px;height:50px;}
+    .topbar>.select{justify-self:start;}
+    .brand{grid-column:1/-1;grid-row:2;text-align:center;padding:4px 0;}
+    .brand h1{font-size:17px;}
+    
+    .translate-wrapper{grid-column:2;grid-row:1;margin:0;flex-direction: column; align-items: flex-end; gap: 4px;}
+    .translate{font-size:13px; gap: 8px;}
+    .translate .select{min-width:auto;padding:7px 28px 7px 10px;font-size:13px;}
+    .topbar-register{font-size:11px; padding: 4px 10px;}
+    
+    .hero-copy{padding:34px 20px;}
+    .hero-copy h2{font-size:27px;}
+    .hero-copy h3{font-size:23px;}
+    .hero-copy p{font-size:16px;}
+    .hero-copy h4{font-size:21px;}
+    .hero-art{min-height:270px;}
+    
+    .mainnav a{min-width:130px;}
+    .content-copy p{font-size:15px;}
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="shield" aria-label="Health protection">
+    <svg viewBox="0 0 60 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 3 55 12v19c0 17-10 27-25 34C15 58 5 48 5 31V12L30 3Z" stroke="white" stroke-width="3"/>
+      <path d="M26 17h8v10h10v8H34v10h-8V35H16v-8h10V17Z" fill="white"/>
+    </svg>
+  </div>
+  
+  <select class="select" aria-label="Select Country">
+    <option value="ng">Nigeria</option>
+  </select>
+
+  <div class="brand">
+    <h1 data-i18n="brand_name">African Diaspora Family Health Protection</h1>
+    <p data-i18n="brand_tagline">YOUR FAMILY . THEIR HEALTH . YOUR RESPONSIBILITY</p>
+  </div>
+
+  <!-- Updated Translate Wrapper with Register Link -->
+  <div class="translate-wrapper">
+    <div class="translate">
+      <span data-i18n="translate_label">Translate:</span> 
+      <select class="select" id="languageSelector" aria-label="Select Language">
+        <option value="en">English</option>
+        <option value="ig">Igbo</option>
+        <option value="ha">Hausa</option>
+        <option value="yo">Yoruba</option>
+        <option value="ef">Efik</option>
+      </select>
+    </div>
+    <a href="register.html" class="topbar-register" data-i18n="hero_register">Register Here</a>
+  </div>
+</header>
+
+<nav class="mainnav" aria-label="Main navigation">
+  <a class="active" href="index.html" data-i18n="nav_family">Nigerian Family<br>Health Protection</a>
+  <a href="senior-care.html" data-i18n="nav_senior">Senior Citizens<br>Home Healthcare</a>
+  <a href="#digital" data-i18n="nav_digital">Telemedicine &amp;<br>Digital Health</a>
+  <a href="#supplies" data-i18n="nav_supplies">Durable<br>Medical Supplies</a>
+  <a href="#training" data-i18n="nav_training">Medical Training,<br>Education &amp; Careers</a>
+  <a href="#partners" data-i18n="nav_partners">Partners</a>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero" id="family">
+    <div class="hero-copy">
+      <h2 data-i18n="hero_h2">Nigerian Family Health Protection</h2>
+      <h3 data-i18n="hero_h3">National Health Insurance Authority.</h3>
+      <strong data-i18n="hero_strong">Group, Individual and Family Social Health Insurance Program (GIFSHIP)</strong>
+      <p data-i18n="hero_p1">provides health insurance for different categories of people.</p>
+      <h4 data-i18n="hero_h4">Who Can Join:</h4>
+      <p data-i18n="hero_p2">Nigerians living abroad who want to be part of the program by paying for their relations and friends in Nigeria.</p>
+      <p class="reasons" data-i18n="hero_reasons">Reasons why Nigerians in Diaspora should pay for health protection for their families in Nigeria</p>
+      
+      <div class="cta-container">
+        <a class="cta" href="#authorization" data-i18n="hero_cta">Read more...</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="nhia-logo-reference.png" alt="National Health Insurance Authority emblem">
+    </div>
+  </section>
+
+  <!-- Authorization Section -->
+  <section class="content" id="authorization">
+    <div class="content-grid">
+      <div class="content-image">
+        <img src="nhia-logo-reference.png" alt="National Health Insurance Authority">
+      </div>
+      <div class="content-copy">
+        <h2 data-i18n="auth_h2">National Health Insurance Authorization</h2>
+        <p data-i18n="auth_p1">Nigerians living in the Diaspora have an opportunity to make a meaningful difference in the lives of their families back home by helping them obtain health insurance.</p>
+        <p data-i18n="auth_p2">Supporting health insurance for parents, children, siblings, and extended family members is more than sending money for medical bills. It is an investment in family protection, dignity, financial security, and longer life.</p>
+        <p data-i18n="auth_p3">Our purpose is to connect Nigerians living abroad with affordable health insurance coverage for their families in their home countries.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reasons Section (Vertical List) -->
+  <section class="reasons-section" id="reasons">
+    <h2 class="reasons-title" data-i18n="reasons_title">Reasons the Nigerians in Diaspora should pay for health protection for their families in Nigeria</h2>
+    
+    <ol class="reasons-list">
+      <li><a href="#" data-i18n="reason_1">Protect Your Parents as They Grow Older</a></li>
+      <li><a href="#" data-i18n="reason_2">Avoid Emergency Fundraising</a></li>
+      <li><a href="#" data-i18n="reason_3">Provide Access to Quality Healthcare</a></li>
+      <li><a href="#" data-i18n="reason_4">Protect Your Family's Financial Security</a></li>
+      <li><a href="#" data-i18n="reason_5">Support Your Children Back Home</a></li>
+      <li><a href="#" data-i18n="reason_6">Give Your Family Peace of Mind</a></li>
+      <li><a href="#" data-i18n="reason_7">Encourage Preventive Healthcare</a></li>
+      <li><a href="#" data-i18n="reason_8">Reduce Dependence on Emergency Cash Transfers</a></li>
+      <li><a href="#" data-i18n="reason_9">Protect Family Members Against Unexpected Illnesses</a></li>
+      <li><a href="#" data-i18n="reason_10">Give Back to Your Community</a></li>
+      <li><a href="#" data-i18n="reason_11">Protect the Family Breadwinner</a></li>
+      <li><a href="#" data-i18n="reason_12">Make Healthcare a Family Priority</a></li>
+      <li><a href="#" data-i18n="reason_13">Build a Healthcare Legacy</a></li>
+      <li><a href="#" data-i18n="reason_14">Support Africa's Healthcare Development</a></li>
+      <li><a href="#" data-i18n="reason_15">Stay Connected With Your Family</a></li>
+    </ol>
+  </section>
+</main>
+
+<footer class="footer" id="partners">
+  <div class="footer-top">
+    <div class="shield">
+      <svg viewBox="0 0 60 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 3 55 12v19c0 17-10 27-25 34C15 58 5 48 5 31V12L30 3Z" stroke="white" stroke-width="3"/>
+        <path d="M26 17h8v10h10v8H34v10h-8V35H16v-8h10V17Z" fill="white"/>
+      </svg>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-tagline" data-i18n="footer_tagline">African Diaspora Family Health Protection — Healthier Families, A Stronger Nigeria</div>
+  </div>
+</footer>
+
+<script>
+  // Translation Dictionary
+  const translations = {
+    en: {
+      brand_name: "African Diaspora Family Health Protection",
+      brand_tagline: "YOUR FAMILY . THEIR HEALTH . YOUR RESPONSIBILITY",
+      translate_label: "Translate:",
+      nav_family: "Nigerian Family<br>Health Protection",
+      nav_senior: "Senior Citizens<br>Home Healthcare",
+      nav_digital: "Telemedicine &<br>Digital Health",
+      nav_supplies: "Durable<br>Medical Supplies",
+      nav_training: "Medical Training,<br>Education & Careers",
+      nav_partners: "Partners",
+      hero_h2: "Nigerian Family Health Protection",
+      hero_h3: "National Health Insurance Authority.",
+      hero_strong: "Group, Individual and Family Social Health Insurance Program (GIFSHIP)",
+      hero_p1: "provides health insurance for different categories of people.",
+      hero_h4: "Who Can Join:",
+      hero_p2: "Nigerians living abroad who want to be part of the program by paying for their relations and friends in Nigeria.",
+      hero_reasons: "Reasons why Nigerians in Diaspora should pay for health protection for their families in Nigeria",
+      hero_cta: "Read more...",
+      hero_register: "Register Here",
+      auth_h2: "National Health Insurance Authorization",
+      auth_p1: "Nigerians living in the Diaspora have an opportunity to make a meaningful difference in the lives of their families back home by helping them obtain health insurance.",
+      auth_p2: "Supporting health insurance for parents, children, siblings, and extended family members is more than sending money for medical bills. It is an investment in family protection, dignity, financial security, and longer life.",
+      auth_p3: "Our purpose is to connect Nigerians living abroad with affordable health insurance coverage for their families in their home countries.",
+      reasons_title: "Reasons the Nigerians in Diaspora should pay for health protection for their families in Nigeria",
+      reason_1: "Protect Your Parents as They Grow Older",
+      reason_2: "Avoid Emergency Fundraising",
+      reason_3: "Provide Access to Quality Healthcare",
+      reason_4: "Protect Your Family's Financial Security",
+      reason_5: "Support Your Children Back Home",
+      reason_6: "Give Your Family Peace of Mind",
+      reason_7: "Encourage Preventive Healthcare",
+      reason_8: "Reduce Dependence on Emergency Cash Transfers",
+      reason_9: "Protect Family Members Against Unexpected Illnesses",
+      reason_10: "Give Back to Your Community",
+      reason_11: "Protect the Family Breadwinner",
+      reason_12: "Make Healthcare a Family Priority",
+      reason_13: "Build a Healthcare Legacy",
+      reason_14: "Support Africa's Healthcare Development",
+      reason_15: "Stay Connected With Your Family",
+      footer_tagline: "African Diaspora Family Health Protection — Healthier Families, A Stronger Nigeria"
+    },
+    ig: {
+      brand_name: "Nchekwa Ahụike Ezinụlọ Ndị Africa Na Mba Ọzọ",
+      brand_tagline: "EZINỤLỌ GỊ . AHỤIKE HA . ỌRỤ GỊ",
+      translate_label: "Tụgharịa:",
+      nav_family: "Nchekwa Ahụike<br>Ezinụlọ Naịjirịa",
+      nav_senior: "Nlekọta Ụlọ<br>Ndị Agadi",
+      nav_digital: "Telemedicine &<br>Ahụike Dijitalụ",
+      nav_supplies: "Ngwongwo Ahụike<br>Na-adịgide Adịgide",
+      nav_training: "Ọzụzụ Ahụike,<br>Mmụta & Ọrụ",
+      nav_partners: "Ndị Mmekọ",
+      hero_h2: "Nchekwa Ahụike Ezinụlọ Naịjirịa",
+      hero_h3: "Ndị Na-ahụ Maka Ahụike Mba.",
+      hero_strong: "Mmemme Ahụike Ọha Na Ezinụlọ (GIFSHIP)",
+      hero_p1: "na-enye mkpuchi ahụike maka otu dị iche iche.",
+      hero_h4: "Onye Nwere Ike Ikwado:",
+      hero_p2: "Ndị Naijiria bi na mba ọzọ chọrọ isonye na mmemme ahụ site na ịkwụ ụgwọ maka ndị ikwu ha na ndị enyi na Naijiria.",
+      hero_reasons: "Ihe mere ndị Naịjirịa nọ na mba ọzọ ga-eji kwụọ ụgwọ maka nchekwa ahụike maka ezinụlọ ha na Naịjirịa",
+      hero_cta: "Gụkwuo...",
+      hero_register: "Debanye aha Ebe a",
+      auth_h2: "Ikike Nchekwa Ahụike Mba",
+      auth_p1: "Ndị Naijiria bi na mba ọzọ nwere ohere iji mee mgbanwe bara uru na ndụ ezinụlọ ha nọ n'ụlọ site n'inyere ha aka ịnweta mkpuchi ahụike.",
+      auth_p2: "ịkwado mkpuchi ahụike maka ndị nne na nna, ụmụaka, ụmụnne, na ndị ezinụlọ gbara gburugburu karịrị iziga ego maka ụgwọ ọrịa. Ọ bụ itinye ego na nchebe ezinụlọ, ugwu, nchekwa ego, na ogologo ndụ.",
+      auth_p3: "Ebumnuche anyị bụ ijikọ ndị Naịjirịa bi na mba ọzọ na mkpuchi ahụike dị ọnụ ala maka ezinụlọ ha na obodo ha.",
+      reasons_title: "Ihe mere ndị Naịjirịa nọ na mba ọzọ ga-eji kwụọ ụgwọ maka nchekwa ahụike maka ezinụlọ ha na Naịjirịa",
+      reason_1: "Chebe Nne na Nna Gị Ka Ha Na-eto",
+      reason_2: "Zere Ịnakọta Ego Mberede",
+      reason_3: "Nye Ohere Inweta Nlekọta Ahụike Dị Mma",
+      reason_4: "Chekwaa Nchekwa Ego Ezinụlọ Gị",
+      reason_5: "Kwado Ụmụ Gị Nọ N'ụlọ",
+      reason_6: "Nye Ezinụlọ Gị Obi Ike",
+      reason_7: "Gbaa Ume Nlekọta Ahụike Mgbochi",
+      reason_8: "Belata Ndabere na Nnyefe Ego Mberede",
+      reason_9: "Chebe Ndị Ezinụlọ Pụọ na Ọrịa A na-atụghị Anya",
+      reason_10: "Nyeghachi Obodo Gị Aka",
+      reason_11: "Chebe Onye Na-azụ Ezinụlọ",
+      reason_12: "Mee Ahụike Ihe Kacha Mkpa Ezinụlọ",
+      reason_13: "Wulite Ihe Nketa Ahụike",
+      reason_14: "Kwado Mmepe Ahụike Africa",
+      reason_15: "Nọgide Na-ahụ Ezinụlọ Gị",
+      footer_tagline: "Nchekwa Ahụike Ezinụlọ Ndị Africa Na Mba Ọzọ — Ezinụlọ Dị Mma, Naịjirịa Siri Ike"
+    },
+    ha: {
+      brand_name: "Kariyar Lafiyar Iyalan Afirka a Ƙasashen Waje",
+      brand_tagline: "IYALINKA . LAFIYARSU . ALHAKINKA",
+      translate_label: "Fassara:",
+      nav_family: "Kariyar Lafiyar<br>Iyalin Najeriya",
+      nav_senior: "Kula da Gida<br>na Tsofaffi",
+      nav_digital: "Telemedicine &<br>Lafiya ta Dijital",
+      nav_supplies: "Kayan Aikin Likita<br>Masu Dorewa",
+      nav_training: "Horon Likita,<br>Ilimi & Ayyuka",
+      nav_partners: "Abokan Hulɗa",
+      hero_h2: "Kariyar Lafiyar Iyalin Najeriya",
+      hero_h3: "Hukumar Inshorar Lafiya ta Kasa.",
+      hero_strong: "Shirin Inshorar Lafiyar Jama'a da Iyali (GIFSHIP)",
+      hero_p1: "yana ba da inshorar lafiya ga nau'ikan mutane daban-daban.",
+      hero_h4: "Wanene Zai Iya Shiga:",
+      hero_p2: "'Yan Najeriya da ke zaune a ƙasashen waje waɗanda ke son shiga cikin shirin ta hanyar biyan kuɗi ga 'yan uwansu da abokansu a Najeriya.",
+      hero_reasons: "Dalilan da ya sa 'yan Najeriya a ƙasashen waje ya kamata su biya kuɗin kariyar lafiya ga iyalansu a Najeriya",
+      hero_cta: "Kara karantawa...",
+      hero_register: "Yi Rijista a Nan",
+      auth_h2: "Izinin Inshorar Lafiya ta Kasa",
+      auth_p1: "'Yan Najeriya da ke zaune a ƙasashen waje suna da damar yin babban canji a rayuwar iyalansu a gida ta hanyar taimaka musu samun inshorar lafiya.",
+      auth_p2: "Tallafawa inshorar lafiya ga iyaye, yara, 'yan'uwa, da dangin dangi ya wuce aika kuɗi don biyan kuɗin magani. Zuba jari ne a cikin kariyar iyali, mutunci, tsaron kuɗi, da tsawon rai.",
+      auth_p3: "Manufarmu ita ce haɗa 'yan Najeriya da ke zaune a ƙasashen waje tare da inshorar lafiya mai araha ga iyalansu a ƙasashensu.",
+      reasons_title: "Dalilan da ya sa 'yan Najeriya a ƙasashen waje ya kamata su biya kuɗin kariyar lafiya ga iyalansu a Najeriya",
+      reason_1: "Kare Iyayenka Yayin da suke Tsufa",
+      reason_2: "Guje wa Tattalin Arzikin Gaggawa",
+      reason_3: "Samar da Damar Samun Ingantaccen Lafiya",
+      reason_4: "Kare Tsaron Kuɗi na Iyalinka",
+      reason_5: "Taimaka wa 'Ya'yanka a Gida",
+      reason_6: "Ba Iyalinka Kwanciyar Hankali",
+      reason_7: "Ƙarfafa Lafiyar Rigakafi",
+      reason_8: "Rage Dogaro da Canjin Kuɗi na Gaggawa",
+      reason_9: "Kare 'Yan Uwa Daga Cututtukan da ba a Zata ba",
+      reason_10: "Ba da Gudummaka ga Al'ummarka",
+      reason_11: "Kare Mai Ciyar da Iyali",
+      reason_12: "Maida Lafiya Babban Fifiko na Iyali",
+      reason_13: "Gina Gadon Lafiya",
+      reason_14: "Tallafawa Ci gaban Lafiya na Afirka",
+      reason_15: "Kasance da Alaka da Iyalinka",
+      footer_tagline: "Kariyar Lafiyar Iyalan Afirka a Ƙasashen Waje — Iyalai Masu Lafiya, Najeriya Mai Ƙarfi"
+    },
+    yo: {
+      brand_name: "Idaabobo Ilera Idile Afirika ni Ilu Okeere",
+      brand_tagline: "IDILE RE . ILERA WON . OJUSE RE",
+      translate_label: "Itumọ:",
+      nav_family: "Idaabobo Ilera<br>Idile Naijiria",
+      nav_senior: "Itọju Ile<br>Awon Agbalagba",
+      nav_digital: "Telemedicine &<br>Ilera Oni-nọmba",
+      nav_supplies: "Ohun elo Isegun<br>Ti o tọ",
+      nav_training: "Ikẹkọ Isegun,<br>Eko & Awọn iṣẹ",
+      nav_partners: "Awọn alabaṣepọ",
+      hero_h2: "Idaabobo Ilera Idile Naijiria",
+      hero_h3: "Alaṣẹ Iṣeduro Ilera ti Orilẹ-ede.",
+      hero_strong: "Eto Iṣeduro Ilera Awujọ Ẹgbẹ, Ẹni Kọọkan ati Idile (GIFSHIP)",
+      hero_p1: "pese iṣeduro ilera fun awọn ẹka oriṣiriṣi eniyan.",
+      hero_h4: "Tani O Le Darapọ:",
+      hero_p2: "Awọn ara Naijiria ti wọn ngbe ni ilu okeere ti wọn fẹ lati kopa ninu eto naa nipa sisanwo fun awọn ibatan ati awọn ọrẹ wọn ni Naijiria.",
+      hero_reasons: "Awọn idi ti awọn ara Naijiria ni Ilu Okeere yẹ ki o sanwo fun idaabobo ilera fun awọn idile wọn ni Naijiria",
+      hero_cta: "Ka siwaju...",
+      hero_register: "Forukọsilẹ Nibi",
+      auth_h2: "Aṣẹ Iṣeduro Ilera ti Orilẹ-ede",
+      auth_p1: "Awọn ara Naijiria ti wọn ngbe ni Ilu Okeere ni aye lati ṣe iyatọ ti o nilari ninu igbesi aye awọn idile wọn ni ile nipa iranlọwọ fun wọn lati gba iṣeduro ilera.",
+      auth_p2: "Atilẹyin iṣeduro ilera fun awọn obi, awọn ọmọde, awọn arakunrin, ati awọn ẹgbẹ idile ju fifi owo ranṣẹ fun awọn owo iwosan. O jẹ idoko-owo ninu idaabobo idile, iyi, aabo owo, ati igbesi aye to gun.",
+      auth_p3: "Idi wa ni lati so awọn ara Naijiria ti wọn ngbe ni ilu okeere pọ pẹlu iṣeduro ilera ti o din owo fun awọn idile wọn ni awọn orilẹ-ede wọn.",
+      reasons_title: "Awọn idi ti awọn ara Naijiria ni Ilu Okeere yẹ ki o sanwo fun idaabobo ilera fun awọn idile wọn ni Naijiria",
+      reason_1: "Daboobo Awon Obi Re Bi Won Se N Dagba",
+      reason_2: "Yago fun Igbowoowo Pajawiri",
+      reason_3: "Pese Aaye si Itoju Ilera Didara",
+      reason_4: "Daboobo Aabo Owo Idile Re",
+      reason_5: "Tilẹyin Awọn Ọmọ Rẹ Ni Ile",
+      reason_6: "Fun Idile Rẹ ni Ibanujẹ Ọkan",
+      reason_7: "Ṣe iwuri fun Itoju Ilera Idena",
+      reason_8: "Dinku Igbẹkẹle lori Awọn Iṣowo Owo Pajawiri",
+      reason_9: "Daboobo Awọn ẹgbẹ idile Lodi si Awọn aarun Airotẹlẹ",
+      reason_10: "Fi Pada si Agbegbe Rẹ",
+      reason_11: "Daboobo Olutọju Idile",
+      reason_12: "Ṣe Ilera ni Pataki Idile",
+      reason_13: "Kọ Ogún Ilera",
+      reason_14: "Tilẹyin Idagbasoke Ilera Afirika",
+      reason_15: "Wà ni Asopọ pẹlu Idile Rẹ",
+      footer_tagline: "Idaabobo Ilera Idile Afirika ni Ilu Okeere — Awọn Idile Ti o ni Ilera, Naijiria Ti o lagbara"
+    },
+    ef: {
+      brand_name: "Nkukim Uwem Ubon African Diaspora",
+      brand_tagline: "UWAK NI . UWEM MMIN . AKPANIKO UWAK",
+      translate_label: "Kaban:",
+      nav_family: "Nkukim Uwem<br>Ubon Nigeria",
+      nav_senior: "Uwem Ubon<br>Mme Eken",
+      nav_digital: "Telemedicine &<br>Uwem Digital",
+      nav_supplies: "Mme Nkpo Uwem<br>Eke Mme",
+      nav_training: "Ikpep Uwem,<br>Mmokut & Mme Akpan",
+      nav_partners: "Mme Akwa",
+      hero_h2: "Nkukim Uwem Ubon Nigeria",
+      hero_h3: "Nkukim Uwem Ubon Mme Nigeria.",
+      hero_strong: "Uwem Ubon Mme Kiet Kiet (GIFSHIP)",
+      hero_p1: "ọnọ uwem ubon ọnọ mme owo kiet kiet.",
+      hero_h4: "Anie Akpa:",
+      hero_p2: "Mme Nigeria ke ebua eka emi ekeme ndidọ ke uwem emi ke ndiwot uku emi ọnọ mme ubon ye mme ekamba ke Nigeria.",
+      hero_reasons: "Mme ntak emi mme Nigeria ke ebua eka edide ndiwot uku ọnọ uwem ubon ọnọ mme ubon emi ke Nigeria",
+      hero_cta: "Kot de...",
+      hero_register: "Kọ Ndek Ebe Emi",
+      auth_h2: "Nkukim Uwem Ubon Mme Nigeria",
+      auth_p1: "Mme Nigeria ke ebua eka emi ekeme ndinam nti ke uwem mme ubon emi ke ufọk ke ndiwot uku ọnọ mmọ ndinọ uwem ubon.",
+      auth_p2: "Ndinọ uwem ubon ọnọ mme ete, mme nwan, mme eyen, ye mme ubon efen edi n̄kpọ efen ke ndiwot uku ọnọ ufọk ubon. Enye edi nditọ eti ọnọ ubon, uku, ye uwem.",
+      auth_p3: "Ntịme ye ndidọk mme Nigeria ke ebua eka ye uwem ubon ọnọ mme ubon mmọ ke ufọk.",
+      reasons_title: "Mme ntak emi mme Nigeria ke ebua eka edide ndiwot uku ọnọ uwem ubon ọnọ mme ubon emi ke Nigeria",
+      reason_1: "Kpeme Nnyin Fo Ke Mgbe Ẹkpọri Ẹkop",
+      reason_2: "Kpeme N̄kpọ Eka Eka",
+      reason_3: "Nọ Uyon Mme Ubọk Ye Uwem",
+      reason_4: "Kpeme Uku Mme Ubon Fo",
+      reason_5: "Kpeme Mme Eyen Fo Ke Ufọk",
+      reason_6: "Nọ Mme Ubon Fo Emem",
+      reason_7: "Kpep Mme Uwem",
+      reason_8: "Ket Mme Uku Eka Eka",
+      reason_9: "Kpeme Mme Ubon Ke Mme Uwem Eka Eka",
+      reason_10: "Nọ Mme Obio Fo",
+      reason_11: "Kpeme Anie Otop Mme Ubon",
+      reason_12: "Nam Uwem Ubon Nti Mme Ubon",
+      reason_13: "Kọ Uwem Ubon",
+      reason_14: "Kpeme Uwem Ubon Africa",
+      reason_15: "Dọ Ke Mme Ubon Fo",
+      footer_tagline: "Nkukim Uwem Ubon African Diaspora — Mme Ubon Ye Uwem, Nigeria Ye Uwem"
+    }
+  };
+
+  // Function to translate the page
+  document.getElementById('languageSelector').addEventListener('change', function(e) {
+    const selectedLang = e.target.value;
+    const elementsToTranslate = document.querySelectorAll('[data-i18n]');
+    
+    elementsToTranslate.forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      if (translations[selectedLang] && translations[selectedLang][key]) {
+        // Use innerHTML to preserve line breaks (<br>) in the navigation links
+        element.innerHTML = translations[selectedLang][key];
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
